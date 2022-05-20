@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/dist/output.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        class App extends React.Component{
+            constructor(){
+                super();
+                this.opciones = ['Mi perfil' , 'Notificaciones', 'Elementos guardados', 'configuración'];
+            }
+            render(){
+                return(
+                    <div class='sideMenu'>
+                        <Usuarios lista={this.opciones}/>
+                    </div>
+                );
+            }
+        }
+        class Opcion extends React.Component{
+            render(){
+                return (<li class='py-2 font-bold hover:bg-black'>{this.props.nombre}</li>);
+            }
+        }
+        class Usuarios extends React.Component{
+            render(){
+                return(
+                    <ul>
+                        {this.props.lista.map(element => {
+                             return(<Opcion nombre={element}/>)
+                        })}
+                    </ul>
+                );
+            }
+        }
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+    <script type="text/babel">
+        class Soplon extends React.Component{
+            constructor(){
+                super();
+                this.state = {text: ""};
+                this.handleChange = this.handleChange.bind(this);
+            }
+            render(){
+                return(
+                    <div>
+                    <input type="text" class="border-black border-2 rounded-lg" onChange={this.handleChange}/>
+                    <span>{this.state.text}</span>
+                    </div>
+                );
+            }
+            handleChange(a){
+                this.setState({text: a.target.value})
+            }
+        }
+        ReactDOM.render(<Soplon />, document.getElementById('soplon'));
+    </script>
+    <script type="text/babel">
+        class UserInfo extends React.Component{
+            constructor(){
+                super();
+                this.state = { loading: true, error: null, data: null};
+            }
+            componentWillMount(){
+                this.props.promise.then(res=> res.json()).then(
+                    value => this.setState({loading: false, data: value}),
+                    error => this.setState({loading: false, error: error})
+                );
+            }
+            render(){
+                if(this.state.loading){return(<span>loading...</span>)}
+                else if(this.state.error != null){return(<span>Error{this.state.error.message}</span>)}
+                else{
+                    var userInfo = this.state.data;
+                    return(
+                        <ul>
+                            <li>{userInfo.login}</li>
+                            <li>{userInfo.followers}</li>
+                            <li>{userInfo.following}</li>
+                            <li>{userInfo.created_at}</li>    
+                        </ul>
+                    )
+                }
+            }
+        }
+        ReactDOM.render(<UserInfo promise={fetch('https://api.github.com/users/Enfasys01')}/>,document.getElementById('users'))
+    </script>
+    <script type="text/babel">
+        class SideMenu extends React.Component{
+            constructor(){
+                    super();
+                    this.opciones=['a','b','c'];
+                }
+            render(){    
+                return(
+                    <Opciones opciones={this.opciones}/>
+                );
+            }
+        }
+        
+        class Opcion extends React.Component{
+            render(){
+                <li>{this.props.texto}</li>
+            }
+        }
+        class Opciones extends React.Component{
+            render(){
+                return(
+                    <ul>
+                        {this.props.opciones.map(opcion => {
+                            return(<Opcion texto={opcion}/>);
+                        })}
+                    </ul>
+                );
+            }
+        }
+        
+        ReactDOM.render(<SideMenu />, document.getElementById(''));
+    </script>
+
+
+</script>
+<!-- Core Library -->
+<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<!-- React DOM Library -->
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<!-- Para convertir código en ES6 a ES5 -->
+<script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script> 
+<script type="text/babel" src="scripts.jsx"></script>
+</body>
+</html>
