@@ -9,3 +9,15 @@
   width: 15rem;
   height: 100%;
 }
+.lista-posts{
+  max-width: 50%;
+  min-width: 500px;
+  margin: auto;
+}
+.votos{
+  max-width: 60px;
+}
+.voto{
+  display: block;
+  margin: auto;
+}
