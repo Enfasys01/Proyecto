@@ -10,7 +10,7 @@ class App extends React.Component{
     },
     {
       usuario:'uri',
-      titulo:'Resumen de trigonometría',
+      titulo:'Analisis sintáctico',
       votos:52,
       materia:'Matemática',
       etiquetas:['Geometría','Ángulos']
@@ -18,7 +18,11 @@ class App extends React.Component{
   }
   render(){
     return(
-      <ListaPosts datos={this.datos}/>
+      <div>
+        
+        <ListaPosts datos={this.datos}/>
+        <BotonCrear/>
+      </div>
     );
   }
 }

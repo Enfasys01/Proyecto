@@ -21,3 +21,13 @@
   display: block;
   margin: auto;
 }
+
+.votos>div>svg:hover{
+  @apply text-violet-800;
+}
+
+.botonCrear{
+  @apply absolute;
+  bottom: 20px;
+  right: 20px;
+}

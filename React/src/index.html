@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/dist/output.css">
     <title>Document</title>
 </head>
-<body class='bg-purple-100'>
+<body class='bg-stone-200'>
     <div id="root"></div>
 </script>
 <!-- Core Library -->
@@ -18,11 +18,21 @@
 <!-- Para convertir código en ES6 a ES5 -->
 <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script> 
 
-<script src="https://unpkg.com/browse/react-router@3.0.2/umd/react-router.min.js"></script>
-<script src="https://unpkg.com/browse/react-router-dom@4.2.2/umd/react-router-dom.min.js"></script>
+<!-- Load React and React DOM -->
+<!-- See https://reactjs.org/docs/add-react-to-a-website.html to learn more -->
+<script src="https://unpkg.com/react@>=16.8/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@>=16.8/umd/react-dom.development.js" crossorigin></script>
+
+<!-- Load history -->
+<script src="https://unpkg.com/history@5/umd/history.development.js" crossorigin></script>
+
+<!-- Load React Router and React Router DOM -->
+<script src="https://unpkg.com/react-router@6/umd/react-router.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-router-dom@6/umd/react-router-dom.development.js" crossorigin></script>
 
 
 <script type="text/babel" src="Components/Home/Post.jsx"></script>
+<script type="text/babel" src="Components/Home/BotonCrear.jsx"></script>
 <script type="text/babel" src="Components/App.jsx"></script>
 </body>
 </html>
